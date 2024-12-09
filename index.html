@@ -1,16 +1,49 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-5">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Quizzy Readz</title>
+    
+    <title>
+        Quizzy Readz
+    </title>
+    
+    <script>
+        function validateForm() {
+            const firstName = document.forms["ourForm"]["firstName"].value;
+            const lastName = document.forms["ourForm"]["lastName"].value;
+            const ageGroup = document.forms["ourForm"]["age"].value;
+            const email = document.forms["ourForm"]["email"].value;
+
+            if (!firstName || !lastName || !ageGroup || !email) {
+                alert("Please fill out all fields.");
+                return false;
+            }
+
+            if (!validateEmail(email)) {
+                alert("Invalid email format.");
+                return false;
+            }
+
+            alert(`Welcome, ${firstName} ${lastName}!\nAge Group: ${ageGroup}\nEmail: ${email}`);
+            return true;
+        }
+
+        function validateEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+    </script>
 </head>
 <body>
     <div id="header">
         <img class="logo" src="images/logo.png" alt="Logo" height="90" width="110">
-        <h1>Quizzy Readz</h1>
+        <h1>Quizzy Readz </h1>
     </div>
+
+    <br>
 
     <nav>
         <a href="index.html">Home</a>
@@ -23,74 +56,44 @@
     <div id="mainBody">
         <div id="left">
             <h2>New</h2>
-            <img src="images/newcathat.png" alt="The Cat in the Hat" height="200" width="150">
+            <img src="images/newcathat.png" alt="The Cat in the Hat" height="300" width="200">
             <p>
-                Calling all Dr. Seuss fans! We're thrilled to announce that The Cat in the Hat quiz has 
-                landed on our website! This beloved classic just got a little more interactive—so now you can dive back 
-                into the world of Dr. Seuss and test your knowledge on all things, from 1 to 2!
+                Calling all Dr. Seuss fans! We're thrilled to announce that The Cat in the Hat 
+                quiz has landed on our website! This beloved classic just got a little more 
+                interactive—so now you can dive back into the world of Dr. Seuss and test your 
+                knowledge on all things, from 1 to 2! Whether you're a long-time Seuss enthusiast 
+                or simply love a good challenge, this quiz is packed with fun, quirky questions 
+                about everyone's favorite troublemaking cat. Think you remember how they cleaned 
+                up the mess? Or how the fish reacted? Let’s see how well you truly know The Cat 
+                in the Hat! Grab a friend, and see who can ace the quiz!
             </p>
         </div>
 
         <div id="middle">
-            <h2>Submit Your Info</h2>
-            <form id="ourForm">
-                First Name: <input type="text" id="firstName"><br><br>
-                Last Name: <input type="text" id="lastName"><br><br>
-                <label for="age">Age Group</label>
-                <select id="ageCheck">
-                    <option value="children">5-10</option>
-                    <option value="adolescent">11-17</option>
-                    <option value="adult">18+</option>
-                </select>
-                <br><br>
-                E-mail: <input type="text" id="email"><br><br>
-                <button type="button" onclick="processForm()">Submit</button>
-            </form>
-            <div id="results">
-                <h3>Form Submitted Successfully!</h3>
-                <p id="nameResult"></p>
-                <p id="ageResult"></p>
-                <p id="emailResult"></p>
+            <div id="box">
+                <form name="ourForm" action="welcome.php" method="post" onsubmit="return validateForm()">
+                    First Name: <input type="text" name="firstName"><br><br>
+                    Last Name: <input type="text" name="lastName"><br><br>
+                    <label for="age">Age</label>
+                    <select id="ageCheck" name="age">
+                        <option value="children">5-10</option>
+                        <option value="adolescent">11-17</option>
+                        <option value="adult">18+</option>
+                    </select>
+                    E-mail: <input type="text" name="email"><br><br>
+                    <input type="submit" value="Submit">
+                </form>
             </div>
         </div>
 
-        <div id="right">
+        <div id="right"> 
             <h2>Popular</h2>
-            <img src="images/harrypooterpop.png" alt="Harry Potter" height="200" width="150">
+            <img src="images/harrypooterpop.png" alt="Harry Potter" height="300" width="300">
             <p>
                 Calling all wizards, witches, and Muggles alike! If you haven’t tried our Harry Potter and the Sorcerer's Stone 
-                quiz yet, you’re missing out on the magic! This quiz is packed with fun facts and surprises about Harry's magical journey!
+                quiz yet, you’re missing out on the magic! As our most popular quiz, it’s the perfect way to relive Harry’s magical journey.
             </p>
         </div>
     </div>
-
-    <script>
-        function processForm() {
-            const firstName = document.getElementById("firstName").value;
-            const lastName = document.getElementById("lastName").value;
-            const ageGroup = document.getElementById("ageCheck").value;
-            const email = document.getElementById("email").value;
-
-            if (!firstName || !lastName || !ageGroup || !email) {
-                alert("Please fill out all fields!");
-                return;
-            }
-
-            if (!validateEmail(email)) {
-                alert("Invalid email format.");
-                return;
-            }
-
-            document.getElementById("results").style.display = "block";
-            document.getElementById("nameResult").textContent = `Name: ${firstName} ${lastName}`;
-            document.getElementById("ageResult").textContent = `Age Group: ${ageGroup}`;
-            document.getElementById("emailResult").textContent = `Email: ${email}`;
-        }
-
-        function validateEmail(email) {
-            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return regex.test(email);
-        }
-    </script>
 </body>
 </html>
