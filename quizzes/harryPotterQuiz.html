@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <title>
+        Quizzy Readz
+    </title>
+    
+    <script>
+        //timer
+        //variables
+        let timerInt;
+        let startTime;
+        let elapsed = 0;
+
+        function timer() {
+            if (timerInt) {
+                clearInterval(timerInt);
+            }
+
+            startTime = Date.now();
+            timerInt = setInterval(updateTimer, 1000);
+        }
+
+        function updateTimer() {
+            const currentTime = Date.now();
+            elapsed= Math.floor((currentTime - startTime) / 1000);
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+
+            //format into minutes and seconds (mm.ss)
+            const time = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+            //display
+            document.getElementById("timer").innerText = time;
+        }
+
+        function returnScore() {
+            let check1 = document.getElementById("correct1").checked;
+            let check2 = document.getElementById("correct2").checked;
+            let check3 = document.getElementById("correct3").checked;
+            let check4 = document.getElementById("correct4").checked;
+            let check5 = document.getElementById("correct5").checked;
+            let check6 = document.getElementById("correct6").checked;
+            let check7 = document.getElementById("correct7").checked;
+            
+            let score = 0
+
+            if(check1){ // Checks if box is selected
+                score++ // If so, it adds one to the value (goes for all if(check))
+            }
+            if(check2){
+                score++;
+            }
+            if(check3){
+                score++;
+            }
+            if(check4){
+                score++;
+            }
+            if(check5){
+                score++;
+            }
+            if(check6){
+                score++;
+            }
+            if(check7){
+                score++;
+            }
+            
+            //store time in localStorage
+            localStorage.setItem("elapsed", elapsed);
+
+            console.log(score)
+
+            window.location.href = '../pages/results.html?score=' +score;
+
+        }
+
+        //start timer on page load
+        window.onload = function(){
+                timer();
+            }
+    </script>
+</head>
+<body>
+    <div id="header">
+        <img class="logo" src="../images/logo.png" alt="Logo" height="90" width="110">
+        <h1>Quizzy Readz</h1>
+    </div>
+
+    <br>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../pages/quizzes.html">Quizzes</a>
+        <a href="../pages/bookinf.html">Book Info</a>
+        <a href="../pages/author.html">Authors</a>
+        <a href="">Resources</a>
+        <a href="">Leaderboard</a>
+        <a href="">Contributors</a>
+    </nav>
+    
+    <h2>Harry Potter and the Sorcerer's Stone Quiz</h2>
+    
+    <div id="timer">00:00</div>
+
+    <ol class="harryQuiz">
+        <li>
+            What was Dudley's last name?
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="A" /><span
+                            >Doyle</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="B" id="correct1"/><span
+                            >Dursley</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="C" /><span
+                            >Desmond</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="D" /><span
+                            >Dominic</span
+                    ></label
+                    >
+                </li>
+            </ul>
+        </li>
+        <br>
+        <li>
+            On which platform does Harry find the train to Howgwarts?
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="A" /><span
+                            >10 1/2</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="B" /><span
+                            >7 1/4</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="C" id="correct2"/><span
+                            >9 3/4</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="D" /><span
+                            >13</span
+                    ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            True or false: Harry believes he will be put in Slytherin by the sorting hat.
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question2" value="A" id="correct3"/><span
+                            >True</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question2" value="B" /><span
+                            >False</span
+                        ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            What is the name of the popular broom sport at Hogwarts?
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question3" value="A" /><span
+                            >Mudwitch</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question3" value="B" /><span
+                            >Broombol</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question3" value="C" /><span
+                            >Umbridge</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question3" value="D" id="correct4"/><span
+                            >Quidditch</span
+                    ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            True or false: A magic mirror Harry stumbles upon is known as the mirror of Eridine.
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question4" value="A" /><span
+                            >True</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question4" value="B" id="correct5"/><span
+                            >False</span
+                        ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            What proffessor was Voldermort inhabiting?
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question5" value="A" id="correct6"/><span
+                            >Quirrell</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question5" value="B" /><span
+                            >Qualmus</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question5" value="C" /><span
+                            >Quinton</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question5" value="D" /><span
+                            >Quinzel</span
+                    ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            Who ends up saving Harry from Voldermort?
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question6" value="A" /><span
+                            >Hermione</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question6" value="B" id="correct7"/><span
+                            >Dumbledore</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question6" value="C" /><span
+                            >Ron</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question6" value="D" /><span
+                            >Snape</span
+                    ></label
+                    >
+                </li>
+            </ul>
+        </li>
+    </ol>
+
+    <div class="checkButton">
+        <button type="button" onclick="returnScore()">View Results</button>
+    </div>
+    <br><br><br>
+</body>
+</html>

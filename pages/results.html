@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <title>
+        Quizzy Readz
+    </title>
+    
+    <script>
+        window.onload = function() {
+
+        //search the url for the score and grab it
+            const urlParameters = new URLSearchParams(window.location.search);
+            const score = urlParameters.get('score');
+
+            //get percent and round to whole number
+            let percent = score/7;
+            let rounded = 100*(percent.toFixed(1));
+        //show score
+            if (score !== null) {
+                document.getElementById("score").innerText = 'Score ' + score + "/7 (" + rounded + "%).";
+                if(score >= 6){
+                text.innerHTML = "Excellent job!";
+                image.innerHTML = "<img class='excellent' src='../images/excellent.gif' alt='excellent!' height='130' width='150' loop=infinite></img>"
+                }
+                else if (score >= 3 && score <= 5) {
+                text.innerHTML = "Almost there!";
+                image.innerHTML = "<img class='cat' src='../images/cat.gif' alt='cat!' height='130' width='150' loop=infinite></img>"
+                }
+                else {
+                text.innerHTML = "Oops! Not quite there";
+                image.innerHTML = "<img class='oops' src='../images/oops.gif' alt='oops!' height='130' width='150' loop=infinite></img>"
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="header">
+        <img class="logo" src="../images/logo.png" alt="Logo" height="90" width="110">
+        <h1>Quizzy Readz</h1>
+    </div>
+
+    <br>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="quizzes.html">Quizzes</a>
+        <a href="bookinf.html">Book Info</a>
+        <a href="author.html">Authors</a>
+        <a href="resources.html">Resources</a>
+    </nav>
+    
+    <h2 id="fix">Your Results</h2>
+    <div id="holder">
+        <p id="score">Your Score: 0 out of 7</p>
+        <div id="text"></div>
+        <div id="image"></div>
+        <div class="checkButton">
+            <a href="../pages/quizzes.html">Try Another Quiz</a>
+        </div>
+    </div>
+</body>
+</html>

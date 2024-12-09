@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <title>
+
+    </title>
+    
+    <script>
+        //timer
+        //variables
+        let timerInt;
+        let startTime;
+        let elapsed = 0;
+
+        function timer() {
+            if (timerInt) {
+                clearInterval(timerInt);
+            }
+
+            startTime = Date.now();
+            timerInt = setInterval(updateTimer, 1000);
+        }
+
+        function updateTimer() {
+            const currentTime = Date.now();
+            elapsed= Math.floor((currentTime - startTime) / 1000);
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+
+            //format into minutes and seconds (mm.ss)
+            const time = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+            //display
+            document.getElementById("timer").innerText = time;
+        }
+
+        function returnScore() {
+            let check1 = document.getElementById("correct1").checked;
+            let check2 = document.getElementById("correct2").checked;
+            let check3 = document.getElementById("correct3").checked;
+            let check4 = document.getElementById("correct4").checked;
+            let check5 = document.getElementById("correct5").checked;
+            let check6 = document.getElementById("correct6").checked;
+            let check7 = document.getElementById("correct7").checked;
+            
+            let score = 0
+
+            if(check1){ // Checks if box is selected
+                score++ // If so, it adds one to the value (goes for all if(check))
+            }
+            if(check2){
+                score++;
+            }
+            if(check3){
+                score++;
+            }
+            if(check4){
+                score++;
+            }
+            if(check5){
+                score++;
+            }
+            if(check6){
+                score++;
+            }
+            if(check7){
+                score++;
+            }
+            
+            //store time in localStorage
+            localStorage.setItem("elapsed", elapsed);
+
+            console.log(score)
+
+            window.location.href = '../pages/results.html?score=' +score;
+
+            //start timer on page load
+            window.onload = function(){
+                timer();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="header">
+        <img class="logo" src="../images/logo.png" alt="Logo" height="90" width="110">
+        <h1>Quizzy Readz</h1>
+    </div>
+
+    <br>
+
+    <nav>
+        <a href="../pages/index.html">Home</a>
+        <a href="../pages/quizzes.html">Quizzes</a>
+        <a href="bookinf.html">Book Info</a>
+        <a href="author.html">Authors</a>
+        <a href="resources.html">Resources</a>
+    </nav>
+    
+    <h2>Cat in the Hat Quiz</h2>
+    <div id="timer">00:00</div>
+    <ol class="cathatQuiz">
+        <li>
+            What is the weather in the beginning?
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="A" id="correct1"/><span
+                            >Rainy</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="B" /><span
+                            >Snowy</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="C" /><span
+                            >Sunny</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="D" /><span
+                            >Cloudy</span
+                    ></label
+                    >
+                </li>
+            </ul>
+        </li>
+        <br>
+        <li>
+            What color is the cats hat?            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="A" /><span
+                            >Black</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="B" /><span
+                            >Grey</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="C" /><span
+                            >Blue</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="D" id="correct2"/><span
+                            >Red</span
+                    ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            The cats second game was called Fun-In-A-Box
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question2" value="A" id="correct3"/><span
+                            >True</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question2" value="B" /><span
+                            >False</span
+                        ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            What pet do the children have?
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question3" value="A" /><span
+                            >A Puppy</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question3" value="B" /><span
+                            >A Fish</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question3" value="C" /><span
+                            >A Lizard</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question3" value="D" /><span
+                            >A Bird</span
+                    ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            The boy used a lasso to catch the things
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question4" value="A" /><span
+                            >True</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question4" value="B" id="correct5"/><span
+                            >False</span
+                        ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            How many items could the cat hold at once?
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question5" value="A" "/><span
+                            >3</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question5" value="B" /><span
+                            >25</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question5" value="C" id="correct6/><span
+                            >11</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question5" value="D" /><span
+                            >30</span
+                    ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            How many things are there?
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question6" value="A" /><span
+                            >1</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question6" value="B" /><span
+                            >Infinite</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question6" value="C" /><span
+                            >3</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question6" value="D" id="correct7"/><span
+                            >2</span
+                    ></label
+                    >
+                </li>
+            </ul>
+        </li>
+    </ol>
+
+    <div class="checkButton">
+        <button type="button" onclick="returnScore()">View Results</button>
+    </div>
+    <br><br><br>
+</body>
+</html>

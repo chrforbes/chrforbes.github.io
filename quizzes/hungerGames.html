@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <title>
+        Quizzy Readz
+    </title>
+    
+    <script>
+        //timer
+        //variables
+        let timerInt;
+        let startTime;
+        let elapsed = 0;
+
+        function timer() {
+            if (timerInt) {
+                clearInterval(timerInt);
+            }
+
+            startTime = Date.now();
+            timerInt = setInterval(updateTimer, 1000);
+        }
+
+        function updateTimer() {
+            const currentTime = Date.now();
+            elapsed= Math.floor((currentTime - startTime) / 1000);
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+
+            //format into minutes and seconds (mm.ss)
+            const time = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+            //display
+            document.getElementById("timer").innerText = time;
+        }
+        
+        function returnScore() {
+            let check1 = correct1.checked;
+            let check2 = correct2.checked;
+            let check3 = correct3.checked;
+            let check4 = correct4.checked;
+            let check5 = correct5.checked;
+            let check6 = correct6.checked;
+            let check7 = correct7.checked;
+            
+            let check = 0
+
+            if(check1){ // Checks if box is selected
+                check++ // If so, it adds one to the value (goes for all if(check))
+            }
+            if(check2){
+                check++;
+            }
+            if(check3){
+                check++;
+            }
+            if(check4){
+                check++;
+            }
+            if(check5){
+                check++;
+            }
+            if(check6){
+                check++;
+            }
+            if(check7){
+                check++;
+            }
+            
+            
+            //store time in localStorage
+            localStorage.setItem("elapsed", elapsed);
+
+            console.log(check)
+
+            window.location.href = '../pages/results.html?score=' +check;
+
+        }
+
+        //start timer on page load
+        window.onload = function(){
+                timer();
+            }
+    </script>
+</head>
+<body>
+    <div id="header">
+        <img class="logo" src="../images/logo.png" alt="Logo" height="90" width="110">
+        <h1>Quizzy Readz</h1>
+    </div>
+
+    <br>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../pages/quizzes.html">Quizzes</a>
+        <a href="../pages/bookinf.html">Book Info</a>
+        <a href="../pages/author.html">Authors</a>
+        <a href="../pages/resources.html">Resources</a>
+    </nav>
+    
+    <h2>The Hunger Games Quiz</h2>
+
+    <div id="timer">00:00</div>
+
+    <ol class="harryQuiz">
+        <li>
+            What district does Katniss live in?
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="A" /><span
+                            >13</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="B" id="correct1"/><span
+                            >12</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="C" /><span
+                            >11</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="D" /><span
+                            >1</span
+                    ></label
+                    >
+                </li>
+            </ul>
+        </li>
+        <br>
+        <li>
+            What is the ceremony for picking the hunger games victors called?
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="A" /><span
+                            >Scouring</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="B" /><span
+                            >Great Choosing</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="C" id="correct2"/><span
+                            >Reaping</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="D" /><span
+                            >The Sorting</span
+                    ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            What was the imagrey on Katniss and Peeta's outfit?
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question2" value="A" id="correct3"/><span
+                            >Sacrifices</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question2" value="B" /><span
+                            >Waves</span
+                        ></label
+                    >
+                </li>
+                <li></li>
+                    <label
+                        ><input type="radio" name="question2" value="B" /><span
+                            >Coal</span
+                        ></label
+                    >
+                </li>
+                <li></li>
+                    <label
+                        ><input type="radio" name="question2" value="B" /><span
+                            >Fire</span
+                        ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+           Highly trained, low district tributes are known as Elites:
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question3" value="A" /><span
+                            >True</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question3" value="B" id="correct4"/><span
+                            >False</span
+                        ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            Who is the girl from District 11 Katniss befriends?
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question4" value="A" /><span
+                            >Ruby</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question4" value="B" id="correct5"/><span
+                            >Rue</span
+                        ></label
+                    >
+                </li>
+                <li></li>
+                    <label
+                        ><input type="radio" name="question4" value="B" id="correct5"/><span
+                            >Raya</span
+                        ></label
+                    >
+                </li>
+                <li></li>
+                    <label
+                        ><input type="radio" name="question4" value="B" id="correct5"/><span
+                            >Wren</span
+                        ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            The killer wasps are known as Tracker Jackers:
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question5" value="A" id="correct6"/><span
+                            >True</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question5" value="B" /><span
+                            >False</span
+                        ></label
+                    >
+                </li>
+            </ul>
+        </li>
+
+        <br>
+        <li>
+            What mutants are the fallen tributes turned into?
+            
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question6" value="A" /><span
+                            >Gorillas</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question6" value="B" id="correct7"/><span
+                            >Lizards</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question6" value="C" /><span
+                            >Wolves</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question6" value="D" /><span
+                            >Panthers</span
+                    ></label
+                    >
+                </li>
+            </ul>
+        </li>
+    </ol>
+
+    <div class="checkButton">
+        <button type="button" onclick="returnScore()">View Results</button>
+    </div>
+    <br><br><br>
+</body>
+</html>

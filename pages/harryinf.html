@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <title>
+        Quizzy Readz
+    </title>
+    
+    <script>
+        // Get the button:
+        let mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        // window.onscroll = function() {
+        //     scrollFunction()
+        // };
+
+        // function scrollFunction() {
+        // if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        //     mybutton.style.display = "block";
+        // } else {
+        //     mybutton.style.display = "none";
+        // }
+        // }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+</head>
+<body>
+    <div id="header">
+        <img class="logo" src="../images/logo.png" alt="Logo" height="90" width="110">
+        <h1>Quizzy Readz</h1>
+    </div>
+
+    <br>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="quizzes.html">Quizzes</a>
+        <a href="bookinf.html">Book Info</a>
+        <a href="author.html">Authors</a>
+        <a href="resources.html">Resources</a>
+    </nav>
+    <h2 style="font-size: 50px; text-align: center; margin-top: 10px; margin-bottom: 10px;">Harry Potter and the Sorcerer's Stone</h2>
+    <div id="authorBody">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+        <div style="width: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <img class="hp" src="../images/harryPotter.jpg" alt="harryPotter" height="670" width="520" style="margin-bottom: 20px;">
+            <p style="font-size: 24px; text-align: center; max-width: 80%;">The first book in the Harry Potter series, Harry Potter and the Sorcerer’s Stone, introduces us to Harry, an orphaned boy living with his abusive aunt, uncle, and cousin, Dudley. On his eleventh birthday, Harry discovers that he is a wizard and has been accepted to attend Hogwarts School of Witchcraft and Wizardry. Hagrid, a friendly giant, informs him of his magical heritage and his parents’ heroic death at the hands of the dark wizard, Voldemort. Arriving at Hogwarts, Harry quickly becomes friends with Ron Weasley and Hermione Granger. Together, they begin learning about magic, forming friendships, and unraveling the mysteries surrounding the magical world.</p>
+            <p style="font-size: 24px; text-align: center; max-width: 80%;">As the school year progresses, Harry learns about the Sorcerer’s Stone, a powerful object hidden at Hogwarts that grants immortality. He suspects that Professor Snape, an ominous teacher, is trying to steal it. With Ron and Hermione’s help, Harry bravely navigates a series of magical obstacles guarding the Stone. In the end, he confronts Professor Quirrell, who is hosting the weakened spirit of Voldemort. Harry manages to protect the Stone and prevent Voldemort’s return. The book concludes with Harry returning to his aunt and uncle’s home for the summer, ready to return to Hogwarts for his next year of magical education.</p>
+        </div>
+    </div>
+    </div>
+
+    <button onclick="topFunction()" id="button"  title="Go to top">Top</button>
+
+</body>
+</html>
