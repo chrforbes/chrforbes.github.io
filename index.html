@@ -28,7 +28,7 @@
             }
 
             alert(`Welcome, ${firstName} ${lastName}!\nAge Group: ${ageGroup}\nEmail: ${email}`);
-            return true;
+            return false; // Prevent submission to a server
         }
 
         function validateEmail(email) {
@@ -71,7 +71,7 @@
 
         <div id="middle">
             <div id="box">
-                <form name="ourForm" action="welcome.php" method="post" onsubmit="return validateForm()">
+                <form name="ourForm" onsubmit="return validateForm()">
                     First Name: <input type="text" name="firstName"><br><br>
                     Last Name: <input type="text" name="lastName"><br><br>
                     <label for="age">Age</label>
